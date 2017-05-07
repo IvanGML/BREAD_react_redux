@@ -2,12 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import initialState from './data/contacts'
-import App from './components/App'
-
-function reduser(state = initialState, action){
-  return state;
-}
+import reduser from './reducers'
+import App from './App'
 
 const store = createStore(reduser, 
                           window.__REDUX_DEVTOOLS_EXTENSION__ && 
