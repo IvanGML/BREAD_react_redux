@@ -3,13 +3,33 @@ import { connect } from 'react-redux';
 import DeleteButton from './DeleteButton.js'
 
 class ContactList extends React.Component{
+  deleteMessage(item){
+    let newStateFunc=(input)=>{
+      let tempArr =[];
+        for (let i = 0; i < input.length; i++) {
+          if(input[i].name !== item){
+            tempArr.push(input[i]);
+          } 
+        }
+      return tempArr;
+    }
+    let newState = newStateFunc(this.props.contactList);
+    this.props.deleteFromStore(newState);
+  }
   render(){
+    let filteredList = this.props.contactList.filter(person => 
+        person.name
+        .toLowerCase()
+        .includes(this.props.contactInput.toLowerCase())
+      );
     return(
       <ul>
-        {this.props.globalStore.map((item, index) => 
+        {filteredList.map((item, index) => 
             <li key={index}>
+              <DeleteButton
+                onDelete={this.deleteMessage.bind(this)}
+                whichItem={item.name}/>
               {item.name + ' ' + item.phone}
-              <DeleteButton />
             </li>
           )}
       </ul>
@@ -19,12 +39,12 @@ class ContactList extends React.Component{
 
 export default connect(
   state => ({
-    globalStore: state.initialList.filter(person => 
-      person.name
-        .toLowerCase()
-        .includes(state.initialInput.toLowerCase()))
+    contactList: state.initialList,
+    contactInput: state.initialInput
   }),
   dispatch => ({
-    
+    deleteFromStore: (newStore)=>{
+      dispatch({type: 'DELETE_FROM_STORE', payload: newStore})
+    }
   })
 )(ContactList);

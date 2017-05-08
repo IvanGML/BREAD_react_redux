@@ -2,11 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class InputFilter extends React.Component{
-  constructor(props){
-    super(props);
-    this.changeInput = this.changeInput.bind(this)
-  }
-  changeInput(e){
+  changeInput = (e) =>{
     console.log(e.target.value);
     this.props.onChangeInput(e.target.value);
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class DeleteButton extends React.Component{
     deleteHandler(){
-        console.log('ку-ку');
+        this.props.onDelete(this.props.whichItem);
     }
     render(){
         return(
