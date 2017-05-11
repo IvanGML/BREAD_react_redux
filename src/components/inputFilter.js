@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { onChangeAction, onMakeSearchAction } from '../actions'
 
 class InputFilter extends React.Component{
   changeInput = (e) =>{
@@ -26,10 +27,10 @@ export default connect(
   }),
   dispatch => ({
     onChangeInput: (value) => {
-      dispatch({type: 'CHANGE_INPUT_VALUE', payload: value})
+      dispatch(onChangeAction(value))
     },
     onMakeSearch: (value) => {
-      dispatch({type: 'MAKE_SEARCH', payload: value})
+      dispatch(onMakeSearchAction(value))
     }
   })
 )(InputFilter);

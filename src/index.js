@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reduser from './reducers'
 import App from './App'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
-const store = createStore(reduser, 
-                          window.__REDUX_DEVTOOLS_EXTENSION__ && 
-                          window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+                reduser, 
+                composeWithDevTools(applyMiddleware(thunk))
+              );
 
 
 

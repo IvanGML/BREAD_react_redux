@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DeleteButton from './DeleteButton.js'
+import { deleteAction } from '../actions';
 
 class ContactList extends React.Component{
-  deleteMessage(item){
+  deleteMessage=(item)=>{
     let newStateFunc=(input)=>{
       let tempArr =[];
         for (let i = 0; i < input.length; i++) {
@@ -27,7 +28,7 @@ class ContactList extends React.Component{
         {filteredList.map((item, index) => 
             <li key={index}>
               <DeleteButton
-                onDelete={this.deleteMessage.bind(this)}
+                onDelete={this.deleteMessage}
                 whichItem={item.name}/>
               {item.name + ' ' + item.phone}
             </li>
@@ -44,7 +45,7 @@ export default connect(
   }),
   dispatch => ({
     deleteFromStore: (newStore)=>{
-      dispatch({type: 'DELETE_FROM_STORE', payload: newStore})
+      dispatch(deleteAction(newStore))
     }
   })
 )(ContactList);
