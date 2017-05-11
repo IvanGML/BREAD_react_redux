@@ -8,8 +8,13 @@ class InputFilter extends React.Component{
     this.props.onChangeInput(e.target.value);
   }
   render(){
+    const inputStyle = {
+      width: '200px',
+      margin: "20px auto",
+      textAlign: "center"
+    }
     return(
-      <div>
+      <div style={inputStyle}>
         <label>Search by name 
           <input 
             type="text"

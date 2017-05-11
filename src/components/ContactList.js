@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DeleteButton from './DeleteButton.js'
+import DeleteButton from './DeleteButton'
 import { deleteAction } from '../actions';
+import EditContact from './EditContact'
+import { Link } from 'react-router'
 
 class ContactList extends React.Component{
-  deleteMessage=(item)=>{
+  deleteContact=(item)=>{
     let newStateFunc=(input)=>{
       let tempArr =[];
         for (let i = 0; i < input.length; i++) {
@@ -23,15 +25,26 @@ class ContactList extends React.Component{
         .toLowerCase()
         .includes(this.props.contactInput.toLowerCase())
       );
+    const itemStyle = {
+                        marginTop: '10px',
+                        padding: '10px 10px 10px 30px',
+                        backgroundColor: '#f3f3f3',
+                        borderRadius: "4px"
+                      };
     return(
       <ul>
         {filteredList.map((item, index) => 
-            <li key={index}>
+          <div key={index} style={itemStyle}>
+            <li>
+              {`Contact name: ${item.name}`}
+                <br/>
+               {`Contact phone: ${item.phone}`}<br/>
               <DeleteButton
-                onDelete={this.deleteMessage}
+                onDelete={this.deleteContact}
                 whichItem={item.name}/>
-              {item.name + ' ' + item.phone}
+              <Link to={`/EditContact/${item.id}`}><button>Edit Contact</button></Link>
             </li>
+          </div>
           )}
       </ul>
     );

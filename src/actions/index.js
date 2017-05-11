@@ -3,3 +3,5 @@ export const onChangeAction = (value) => dispatch => dispatch({type: 'CHANGE_INP
 export const onMakeSearchAction = (value) => dispatch => dispatch({type: 'MAKE_SEARCH', payload: value})
 
 export const deleteAction = (newStore) => dispatch => dispatch({type: 'DELETE_FROM_STORE', payload: newStore})
+
+export const setInfo = (value) => dispatch => dispatch({type: 'SET_NEW_CONTACT_INFO', payload: value})

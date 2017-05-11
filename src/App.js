@@ -5,6 +5,7 @@ import InputFilter from './components/InputFilter'
 
 class App extends React.Component{
   render(){
+
     return(
         <div>
             <InputFilter/>
