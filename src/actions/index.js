@@ -17,3 +17,8 @@ export const setInfo = (value) => dispatch => dispatch({
     type: 'SET_NEW_CONTACT_INFO',
     payload: value
 })
+
+export const NewContact = (value) => dispatch => dispatch({
+    type: 'CREATE_NEW_CONTACT',
+    payload: value
+})
