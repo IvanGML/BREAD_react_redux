@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { onChangeAction, onMakeSearchAction } from '../actions'
+import AddContact from './AddContact'
 
 class InputFilter extends React.Component{
   changeInput = (e) =>{
     console.log(e.target.value);
     this.props.onChangeInput(e.target.value);
+  }
+  toggleAddContact = () => {
+    let elem = document.getElementById('AddContactMenu');
+    elem.classList.toggle('displayNone');
   }
   render(){
     const inputStyle = {
@@ -21,6 +26,8 @@ class InputFilter extends React.Component{
             value={this.props.globalStore.initialInput}
             onChange={this.changeInput}/>
         </label>
+        <button onClick={this.toggleAddContact}>+</button>
+        <AddContact/>
       </div>
     );
   }
