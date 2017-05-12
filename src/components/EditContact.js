@@ -12,6 +12,7 @@ class EditContact extends React.Component{
             newPhone: this.inputPhone.value
         }
         this.props.setNewContactInfo(returnedObj);
+        this.forceUpdate();
     }
     render(){
         return(

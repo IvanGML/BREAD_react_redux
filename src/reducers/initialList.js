@@ -11,7 +11,8 @@ const initialList = (state = initialState, action) => {
                 }
                 return contact;
             })
-            return newState;
+            let temp = newState.map(item => item)
+            return temp;
         case 'CREATE_NEW_CONTACT':
             let tempPayload = action.payload;
             if(state === undefined){

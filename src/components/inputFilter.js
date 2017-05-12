@@ -5,7 +5,6 @@ import AddContact from './AddContact'
 
 class InputFilter extends React.Component{
   changeInput = (e) =>{
-    console.log(e.target.value);
     this.props.onChangeInput(e.target.value);
   }
   toggleAddContact = () => {
