@@ -11,11 +11,7 @@ class EditContact extends React.Component{
             newName: this.inputName.value,
             newPhone: this.inputPhone.value
         }
-        console.log(this.state);
-
-        // let newState = '';
-
-        // this.props.setNewContactInfo(newState);
+        this.props.setNewContactInfo(returnedObj);
     }
     render(){
         return(
