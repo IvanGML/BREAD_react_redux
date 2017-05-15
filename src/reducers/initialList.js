@@ -15,11 +15,6 @@ const initialList = (state = initialState, action) => {
             return temp;
         case 'CREATE_NEW_CONTACT':
             let tempPayload = action.payload;
-            if(state === undefined){
-                tempPayload.id = state[state.length-1].id+1
-            } else {
-                tempPayload.id = 1
-            }
             state[state.length] = action.payload
             let newStore = state.map(item => item)
             return newStore 

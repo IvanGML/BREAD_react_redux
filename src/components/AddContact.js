@@ -4,8 +4,9 @@ import { NewContact } from '../actions'
 
 class AddButton extends React.Component{
     createNewContact=()=>{
+        let list = this.props.globalStore.initialList;
         const newObj = {
-            id: 1,
+            id: list.length+1,
             name: this.inputName.value,
             phone: this.inputPhone.value
         }

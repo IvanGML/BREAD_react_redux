@@ -25,16 +25,11 @@ class ContactList extends React.Component{
         .toLowerCase()
         .includes(this.props.contactInput.toLowerCase())
       );
-    const itemStyle = {
-                        marginTop: '10px',
-                        padding: '10px 10px 10px 30px',
-                        backgroundColor: '#f3f3f3',
-                        borderRadius: "4px"
-                      };
+
     return(
       <ul>
         {filteredList.map((item, index) => 
-          <div key={index} style={itemStyle}>
+          <div key={index} className='itemStyle'>
             <li>
               {`Contact name: ${item.name}`}
                 <br/>
@@ -42,7 +37,9 @@ class ContactList extends React.Component{
               <DeleteButton
                 onDelete={this.deleteContact}
                 whichItem={item.name}/>
-              <Link to={`/EditContact/${item.id}`}><button>Edit Contact</button></Link>
+              <Link to={`/EditContact/${item.id}`}>
+                <button>Edit Contact</button>
+              </Link>
             </li>
           </div>
           )}
