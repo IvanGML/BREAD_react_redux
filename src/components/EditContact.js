@@ -11,8 +11,15 @@ class EditContact extends React.Component{
             newName: this.inputName.value,
             newPhone: this.inputPhone.value
         }
-        this.props.setNewContactInfo(returnedObj);
-        this.forceUpdate();
+        let editiIt = confirm(
+`DoE you want update this contact with next parameters?
+new name: ${this.inputName.value}
+new phone: ${this.inputPhone.value}`
+        );
+        if(editiIt){
+            this.props.setNewContactInfo(returnedObj);
+            this.forceUpdate();
+        }
     }
     render(){
         return(
@@ -42,20 +49,6 @@ class EditContact extends React.Component{
         );
     }
 }
-
-/*
-const EditContact = ({contact}) => 
-    <div>
-        {`Contect name: ${contact.name}`}<br/>
-        {`Contect name: ${contact.phone}`}
-        <div>
-            <div>
-                <label>Type new name<input type='text' placeholder='name'/></label><br/>
-                <label>Type new phone number<input type='text' placeholder='phone number'/></label>
-            </div>
-            <button>Edit</button>
-        </div>
-    </div>*/
 
 const mapStateToProps = (state, ownProps) => {
     return {

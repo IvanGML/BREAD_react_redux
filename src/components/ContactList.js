@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DeleteButton from './DeleteButton'
 import { deleteAction } from '../actions';
-import EditContact from './EditContact'
+// import EditContact from './EditContact'
 import { Link } from 'react-router'
 
 class ContactList extends React.Component{
